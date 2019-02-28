@@ -2,25 +2,17 @@ import { Injectable, HttpService } from "@nestjs/common"
 import { Observable } from "rxjs"
 import { User } from "./interfaces/user.interfaces"
 import { AxiosResponse, AxiosRequestConfig } from "axios"
-
-const getUserUrl: string =
-  "https://api.netease.im/nimserver/user/getUinfos.action"
+import { UserAPI } from "./utils/common.urls"
+import { HeaderBuilder } from "./utils/common.headerBuilder"
 
 const postData: object = {
-  accids: "yskj_admin"
+  accid: "czhang",
+  props: "",
+  token: "",
+  icon: ""
 }
 
 export interface RespUser {}
-
-const headConfig: AxiosRequestConfig = {
-  headers: {
-    "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
-    AppKey: "2723b412c032161d5f240aaa61b929cd",
-    Nonce: "yskj2407",
-    CurTime: Date.now(),
-    CheckSum: "a0ea25b77e489a9b3e835e8e13fec6ae529968f6"
-  }
-}
 
 @Injectable()
 export class UserService {
@@ -33,6 +25,17 @@ export class UserService {
   }
 
   getUserInfo(): Observable<AxiosResponse<RespUser>> {
-    return this.httpService.post(getUserUrl, postData, headConfig)
+    const headConfig: AxiosRequestConfig = new HeaderBuilder().genHeader()
+
+    let formBody = []
+    for (let property in postData) {
+      var encodedKey = encodeURIComponent(property)
+      var encodedValue = encodeURIComponent(postData[property])
+      formBody.push(encodedKey + "=" + encodedValue)
+    }
+    let sendBody = formBody.join("&")
+    console.log("postData...", sendBody)
+
+    return this.httpService.post(UserAPI.updateUser, sendBody, headConfig)
   }
 }
