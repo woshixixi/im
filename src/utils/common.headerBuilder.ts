@@ -13,9 +13,21 @@ export class HeaderBuilder {
     nonce: string,
     curTime: string
   ): string {
-    let shaSum: crypto.Hash = crypto.createHash("sha1")
+    const shaSum: crypto.Hash = crypto.createHash("sha1")
     shaSum.update(appSecret + nonce + curTime)
     return shaSum.digest("hex")
+  }
+
+  genStringfyData(data: object): string {
+    const resultArray: string[] = []
+    for (const property in data) {
+      if (data.hasOwnProperty(property)) {
+        const encodedKey: string = encodeURIComponent(property)
+        const encodedValue: string = encodeURIComponent(data[property])
+        resultArray.push(encodedKey + "=" + encodedValue)
+      }
+    }
+    return resultArray.join("&")
   }
 
   genHeader(): object {

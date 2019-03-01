@@ -24,18 +24,10 @@ export class UserService {
     return "Hello World!"
   }
 
-  getUserInfo(): Observable<AxiosResponse<RespUser>> {
-    const headConfig: AxiosRequestConfig = new HeaderBuilder().genHeader()
-
-    let formBody = []
-    for (let property in postData) {
-      var encodedKey = encodeURIComponent(property)
-      var encodedValue = encodeURIComponent(postData[property])
-      formBody.push(encodedKey + "=" + encodedValue)
-    }
-    let sendBody = formBody.join("&")
-    console.log("postData...", sendBody)
-
+  updateUserInfo(): Observable<AxiosResponse<RespUser>> {
+    const header = new HeaderBuilder()
+    const headConfig: AxiosRequestConfig = header.genHeader()
+    const sendBody = header.genStringfyData(postData)
     return this.httpService.post(UserAPI.updateUser, sendBody, headConfig)
   }
 }

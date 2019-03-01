@@ -11,9 +11,9 @@ export class UserController {
   }
 
   @Get("user")
-  getUserInfo(): any {
+  updateUser(): any {
     this.userService
-      .getUserInfo()
+      .updateUserInfo()
       .subscribe(resp => console.log("response...:", resp.data))
     return null
   }
