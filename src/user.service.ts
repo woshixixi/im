@@ -17,17 +17,18 @@ export interface RespUser {}
 @Injectable()
 export class UserService {
   constructor(private readonly httpService: HttpService) {}
-
   private readonly users: User[] = []
-
-  getHello(): string {
-    return "Hello World!"
-  }
 
   updateUserInfo(): Observable<AxiosResponse<RespUser>> {
     const header = new HeaderBuilder()
     const headConfig: AxiosRequestConfig = header.genHeader()
     const sendBody = header.genStringfyData(postData)
     return this.httpService.post(UserAPI.updateUser, sendBody, headConfig)
+  }
+
+  createUser(): Observable<AxiosResponse<RespUser>> {
+    const header = new HeaderBuilder()
+    const headConfig: AxiosRequestConfig = header.genHeader()
+    return this.httpService.post(UserAPI.createUser, "", headConfig)
   }
 }
