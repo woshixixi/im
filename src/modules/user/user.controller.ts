@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body } from "@nestjs/common"
 import { UserService } from "./user.service"
-import { CreateUserDto } from "./dto/create-user.dto"
+import { CreateUserDto } from "../../dto/create-user.dto"
 
 @Controller()
 export class UserController {
@@ -16,7 +16,7 @@ export class UserController {
 
   @Post("user")
   createUser(@Body() createUserDto: CreateUserDto): any {
-    console.log("create user dto", createUserDto)
+    this.userService.createUserTest()
     // this.userService
     //   .createUser()
     //   .subscribe(resp => console.log("response...:", resp.data))

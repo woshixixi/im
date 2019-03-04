@@ -4,7 +4,7 @@ use im_test;
 
 CREATE TABLE `user` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `accid` varchar NOT NULL,
+  `accid` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `icon` varchar(255) DEFAULT '',
@@ -17,5 +17,7 @@ CREATE TABLE `user` (
   `is_deleted` tinyint(1) DEFAULT 0,
   `deleted_at` datetime DEFAULT "1970-01-01 00:00:00",
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO user (accid,password,name,email,role)  VALUES ("yskj_0",'abc123','yskj','yskj@lambdacal.com','admin');
