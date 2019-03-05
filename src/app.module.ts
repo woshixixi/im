@@ -1,8 +1,8 @@
-import { Module, HttpModule } from "@nestjs/common"
+import { Module } from "@nestjs/common"
 import { TypeOrmModule } from "@nestjs/typeorm"
 import { UserModule } from "./modules/user/user.module"
 
 @Module({
-  imports: [TypeOrmModule.forRoot(), UserModule, HttpModule]
+  imports: [TypeOrmModule.forRoot(), UserModule]
 })
 export class AppModule {}

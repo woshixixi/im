@@ -1,11 +1,11 @@
 import { Injectable, HttpService } from "@nestjs/common"
 import { Observable } from "rxjs"
 import { AxiosResponse, AxiosRequestConfig } from "axios"
-import { UserAPI } from "../../utils/common.urls"
-import { HeaderBuilder } from "../../utils/common.headerBuilder"
+import { UserAPI } from "./utils/common.urls"
+import { HeaderBuilder } from "./utils/common.headerBuilder"
 import { InjectRepository } from "@nestjs/typeorm"
 import { Repository } from "typeorm"
-import { User } from "../../entity/user.entity"
+import { User } from "./entity/user.entity"
 
 const postData: object = {
   accid: "czhang",
@@ -37,7 +37,7 @@ export class UserService {
   }
 
   createUserTest(): any {
-    this.userRepository.find().then(resp => console.log("afterfinde", resp))
+    console.log("...", this.userRepository)
     return ""
   }
 }
