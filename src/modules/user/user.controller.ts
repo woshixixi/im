@@ -22,4 +22,10 @@ export class UserController {
     //   .subscribe(resp => console.log("response...:", resp.data))
     return null
   }
+
+  @Get("testuser")
+  testApi(): any {
+    return this.userService.testUserAPI()
+    // return "hellow"
+  }
 }
