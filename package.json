@@ -1,7 +1,7 @@
 {
-  "name": "im-test",
+  "name": "im",
   "version": "0.0.1",
-  "description": "im api",
+  "description": "im",
   "author": "czhang",
   "license": "MIT",
   "scripts": {
@@ -64,9 +64,5 @@
   "main": "index.js",
   "directories": {
     "test": "test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "http://10.0.1.25/czhang/im_test.git"
   }
 }

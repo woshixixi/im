@@ -20,4 +20,4 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO user (accid,password,name,email,role)  VALUES ("yskj_0",'abc123','yskj','yskj@lambdacal.com','admin');
+INSERT INTO user (accid,password,name,email,role)  VALUES ("admin",'abc123','admin','zhangchenxi7@outlook.com','admin');
