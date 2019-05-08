@@ -16,7 +16,7 @@ $ yarn
 
 ```bash
 # development
-$ npm start
+$ yarn start
 
 # watch mode
 $ yarn run start:dev
